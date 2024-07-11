@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Navigation Menu</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+#navbar {
+  text-align: center;
+}
+
+#navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#navbar ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+#navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px;
+  transition: all 0.3s ease;
+  border-radius: 20px; /* Larger border radius for pill shape */
+  border: 2px solid transparent; /* Transparent border initially */
+  display: inline-block;
+}
+
+#navbar ul li:nth-child(1) a:hover {
+  background-color: #e74c3c; /* Red */
+  color: #fff; /* White text */
+  border-color: #e74c3c; /* Red border */
+}
+
+#navbar ul li:nth-child(2) a:hover {
+  background-color: #f39c12; /* Orange */
+  color: #fff; /* White text */
+  border-color: #f39c12; /* Orange border */
+}
+
+#navbar ul li:nth-child(3) a:hover {
+  background-color: #2ecc71; /* Green */
+  color: #fff; /* White text */
+  border-color: #2ecc71; /* Green border */
+}
+
+#navbar ul li:nth-child(4) a:hover {
+  background-color: #3498db; /* Blue */
+  color: #fff; /* White text */
+  border-color: #3498db; /* Blue border */
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <nav id="navbar">
+    <div class="container">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- Your main content here -->
+</main>
+
+<script>// Get the navigation bar element
+const navbar = document.getElementById('navbar');
+
+// Function to change the style of the navbar on scroll
+function changeNavbarStyleOnScroll() {
+  if (window.scrollY > 50) {
+    navbar.style.backgroundColor = '#555';
+  } else {
+    navbar.style.backgroundColor = '#333';
+  }
+}
+
+// Event listener for scroll event
+window.addEventListener('scroll', changeNavbarStyleOnScroll);
+
+// Function to change style on hover
+function changeStyleOnHover(event) {
+  if (event.target.tagName === 'A') {
+    const colors = ['#e74c3c', '#f39c12', '#2ecc71', '#3498db']; // Array of different colors
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    event.target.style.borderColor = randomColor; // Change border color dynamically
+  }
+}
+
+// Function to reset style on hover out
+function resetStyleOnHover(event) {
+  if (event.target.tagName === 'A') {
+    event.target.style.backgroundColor = ''; // Reset to default background color
+    event.target.style.borderColor = 'transparent'; // Reset to transparent border
+  }
+}
+
+// Event listeners for hover events
+navbar.addEventListener('mouseover', changeStyleOnHover);
+navbar.addEventListener('mouseout', resetStyleOnHover);
+
+
+</script>
+</body>
+</html>
